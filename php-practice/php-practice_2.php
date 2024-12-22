@@ -47,16 +47,51 @@ var_dump($personalInfos);
 
 echo $personalInfos[1]['name'].'の電話番号は'.$personalInfos[1]['tel'].'です。'."\n";
 
-foreach($personalInfos as $key1 => $value1) {
-    for(i = 0; i <= 2; i++) {
-        echo $value1[i];
-    }
+foreach($personalInfos as $key => $value) {
+    $key = $key + 1;
+    echo $key.'番目の'.$value['name'].'のメールアドレスは'.$value['mail'].'で、電話番号は'.$value['tel'].'です。'."\n";
 }
 
 // Q3 オブジェクト-1
 
+class Student
+{
+    public $studentId;
+    public $studentName;
+
+    public function __construct($id, $name)
+    {
+        $this->studentId = $id;
+        $this->studentName = $name;
+    }
+
+    public function attend()
+    {
+        echo $this->studentName.'はPHPの授業に参加しました。学籍番号：'.$this->studentId;
+    }
+}
+
+$yamada = new Student(120, '山田');
+
+echo '学籍番号'.$yamada->studentId.'番の生徒は'.$yamada->studentName.'です。';
+
 // Q4 オブジェクト-2
+
+$yamada->attend('PHP');
 
 
 // Q5 定義済みクラス
+// 問題1
+date_default_timezone_set('Asia/Tokyo');
+$today = new DateTime('now');
+$last_month = $today->modify('-1 month')->format('Y-m-d');
+echo $last_month;
+
+// 問題2
+date_default_timezone_set('Asia/Tokyo');
+$today = new DateTime('now');
+$day = new DateTime('1992-4-25');
+$diff = $day->diff($today);
+echo $diff->format('あの日から%a日経過しました。');
+
 ?>
