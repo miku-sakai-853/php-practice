@@ -33,11 +33,7 @@ $device = 'windows';
 if ($device !== 'windows' && $device !== 'mac') {
     echo 'どちらでもありません。'."\n";
 } else {
-    if ($device = 'windows') {
-        echo '使用OSは、windowsです。'."\n";
-    } else {
-        echo '使用OSは、macです。'."\n";
-    }
+    echo '使用OSは、'.$device.'です。';
 }
 
 // Q5 条件分岐-2 三項演算子
@@ -78,6 +74,7 @@ foreach ($capital as $key => $value) {
 foreach ($capital as $key => $value) {
     if ($key == '埼玉県') {
         echo $key.'の県庁所在地は、'.$value.'です。'."\n";
+        break;
     } else {
         continue;
     }
@@ -111,11 +108,15 @@ hello関数の引数に任意の名前を渡して実行し、その返り値を
 引数として渡す値を変えて2回実行することで2つの文章を表示
 */
 
-function hello($name) {
-      echo $name.'さん、こんにちは。'."\n";
+function hello($lastName) {
+    $name = $lastName.'さん、こんにちは。'."\n";
+    return $name;
 }
-hello('金谷');
-hello('安藤');
+$name = hello('金谷');
+echo $name;
+
+$name = hello('安藤');
+echo $name;
 
 // Q11 関数-2
 // 以下の条件のもと、消費税込み価格を計算する関数を作成
@@ -168,24 +169,22 @@ function evaluateGrade($judge) {
     switch ($judge) {
         case 'A':
         case 'B':
-            echo '合格です。'."\n";
-            break;
+            return '合格です。'."\n";
     
         case 'C':
-            echo '合格ですが追加課題があります。'."\n";
-            break;
+            return '合格ですが追加課題があります。'."\n";
     
         case 'D':
-            echo '不合格です。'."\n";
-            break;
+            return '不合格です。'."\n";
     
         default:
-            echo '判定不明です。講師に問い合わせてください。'."\n";
-            break;
+            return '判定不明です。講師に問い合わせてください。'."\n";
     }
 }
 
-evaluateGrade('A');
-evaluateGrade('E');
+$judge = evaluateGrade('A');
+echo $judge;
+$judge = evaluateGrade('E');
+echo $judge;
 
 ?>
